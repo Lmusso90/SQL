@@ -1,0 +1,46 @@
+
+
+
+This is my first ever SQL Project.
+I've created a store database and then added inventory.
+I selected the price column from my table, selected a the quantity column to show inventory less than or equal to 10,
+and lastly, selected the most expensive clothing type from the store with its price.
+
+
+
+
+
+create table Clothes_store (id integer primary key, clothing_type text, size text, price integer, color text, quantity integer);
+
+
+
+INSERT into clothes_store values (1,"flower shirt","s",12.99,"black", 6);
+INSERT into clothes_store values (2,"denim pants","s",24.99,"black", 12);
+INSERT into clothes_store values (3,"tank top","m",10.99,"red", 8);
+Insert into clothes_store values (4, "underware", "l", 6.99, "red", 14);
+Insert into clothes_store values (5,"socks", "o/s",8.99,"white", 12);
+Insert into clothes_store values (6, "leggings", "m", 16.99,"grey", 16);
+INSERT into clothes_store values (7, "sports bra", "s", 24.99, "blue", 14);
+INSERT into clothes_store values(8, "joggers", "m", 17.99, "grey", 12);
+INSERT into clothes_store values (9, "crop top", "l", 12.99,"green", 15);
+INSERT into clothes_store values (10, "dress", "m", 26.99, "purple",17);
+INSERT into clothes_store values (11, "baseball cap","o/s",19.99,"red",8);
+INSERT into clothes_store values (12, "gold plated necklace", "o/s", 16.99, "N/A", 25);
+INSERT into clothes_store values (13, "beanie", "o/s", 12.99, "blue", 16);
+INSERT into clothes_store values (14, "skirt", "xl", 18.99, "black", 11);
+INSERT into clothes_store values (15, "sweatshirt", "m", 35.99, "grey", 24);
+
+
+
+
+Select price from clothes_store;
+Select * from clothes_store
+where quantity <=10;
+
+select clothing_type, max(price) from Clothes_store;
+
+
+
+
+
+
