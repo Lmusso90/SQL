@@ -1,0 +1,63 @@
+Here I Used the data table from the link beblow to query the following:
+
+
+[https://gist.github.com/pamelafox/1ddbcb55f9ba1f6ec435](card_game_results.sql)
+
+I used the data table to practice the following: 
+
+What are average, max, and min values in the data?
+What about those numbers per category in the data (using HAVING)?
+What ways are there to group the data values that don’t exist yet (using CASE)?
+What interesting ways are there to filter the data (using AND/OR)?
+
+
+
+/*AS*/
+
+SELECT game_name AS 'games' FROM card_games GROUP BY game_name;
+
+/*MIN,MAX,AVG*/
+
+SELECT game_name,player_name, MAX(score) FROM card_games GROUP BY game_name;
+
+SELECT game_name,player_name, MIN(score) FROM card_games GROUP BY game_name;
+
+SELECT game_name, ROUND(AVG(score)) AS'AVG_score' FROM
+card_games GROUP BY game_name;
+
+SELECT game_name, MAX(score), MIN(score) FROM card_games GROUP BY game_name;
+
+SELECT game_name, MAX(score), MIN(score) FROM card_games WHERE game_name ='Go Fish'; 
+
+/*HAVING*/
+
+SELECT player_name, game_name, Score FROM card_games GROUP BY player_name HAVING score >300;
+
+/*OR*/
+
+SELECT Date_played,player_name, game_name FROM card_games WHERE game_name = 'Go Fish'OR game_name = 'Pitch' GROUP BY date_played;
+
+/*AND*/
+
+SELECT* FROM card_games WHERE game_name= 'Rummy' AND score >=200 GROUP BY Player_name;
+
+
+/*CASE*/
+
+SELECT score FROM card_games WHERE game_name = 'Rummy' ORDER BY score DESC;
+
+SELECT Date_played, player_name, score AS 'Rummy_Score',
+CASE
+WHEN score >500 THEN 'ALL STAR'
+WHEN score >400 THEN 'PRO'
+WHEN score >300 THEN 'OKAY'
+ELSE 'You_stink'
+END AS 'score_rankings'
+FROM card_games
+WHERE game_name= 'Rummy'
+GROUP BY score ORDER By player_name;
+
+/*COUNT*/
+
+SELECT COUNT(game_name)AS 'Times_Winston_played_Rummy' FROM card_games WHERE game_name='Rummy' AND player_name ='Winston';
+
