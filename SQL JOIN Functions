@@ -1,0 +1,54 @@
+For this project I practiced using JOIN functions
+
+
+
+/* Create table about the people and what they do here */
+CREATE TABLE singer
+(id INTEGER PRIMARY KEY AUTOINCREMENT, 
+name TEXT, hit_song TEXT, number_of_albums INTEGER);
+
+INSERT INTO singer ( name, hit_song, number_of_albums) 
+VALUES('suzy','happy birthday',10);
+INSERT INTO singer ( name, hit_song, number_of_albums) 
+VALUES('jose','row your boat',12);
+INSERT INTO singer ( name, hit_song, number_of_albums) 
+VALUES('bella','ring around the rosey',17);
+
+CREATE TABLE hometown
+(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, years_lived_in_HT INTEGER);
+
+INSERT INTO hometown (name,years_lived_in_HT)
+VALUES('reading',20);
+INSERT INTO hometown (name,years_lived_in_HT)
+VALUES('los angeles', 8);
+INSERT INTO hometown (name,years_lived_in_HT)
+VALUES('atlanta',18);
+
+CREATE TABLE moved_to
+(id INTEGER PRIMARY KEY AUTOINCREMENT, city_name TEXT);
+INSERT INTO moved_to (city_name)
+VALUES ('los angeles');
+INSERT INTO moved_to (city_name)
+VALUES ('orlando');
+INSERT INTO moved_to (city_name)
+VALUES ('houston');
+
+
+
+SELECT s.name, h.name AS 'home_town', h.years_lived_in_HT AS 'years_lived'  
+FROM singer s
+JOIN hometown h 
+ON s.id=h.id;
+
+
+
+SELECT s.name, h. name AS 'home_town', m.city_name AS 'moved_to'
+FROM singer s
+JOIN hometown h 
+ON s.id=h.id
+JOIN moved_to m
+ON s.id=m.id;
+
+
+
+
